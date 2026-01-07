@@ -1,0 +1,52 @@
+body {
+    background: linear-gradient(90.38deg, #1F1A1A 17.08%, #1A1919 33.05%, #1D1D1D 50.9%, #1B1A1A 69.21%, #211D1D 84.24%, #0D0C0C 99.27%);
+}
+
+/* li > a {
+    text-decoration: none;
+    color: inherit;
+}
+
+nav > li {
+    list-style-type: none;
+} */
+
+#navbar-links > li {
+    list-style-type: none;
+    width: auto;
+}
+
+#navbar-links > li > a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+#navbar-links > li {
+    transition: transform 300ms;
+}
+
+
+#navbar-links {
+    gap: 1.5rem;
+}
+
+#logo-text {
+    letter-spacing: 6px;
+    font-weight: bold;
+    text-wrap: wrap;
+    font-size: 2em;
+}
+
+
+#main-image p, #main-image span {
+    display: block;
+}
+
+#main-image p {
+    color: white;
+    z-index: 2;
+    background: #1F1A1A;
+    border-radius: 0 0 2rem 0;
+
+}
