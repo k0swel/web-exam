@@ -2,41 +2,6 @@ body {
     background: linear-gradient(90.38deg, #1F1A1A 17.08%, #1A1919 33.05%, #1D1D1D 50.9%, #1B1A1A 69.21%, #211D1D 84.24%, #0D0C0C 99.27%);
 }
 
-/* li > a {
-    text-decoration: none;
-    color: inherit;
-}
-
-nav > li {
-    list-style-type: none;
-} */
-
-#navbar-links > li {
-    list-style-type: none;
-    width: auto;
-}
-
-#navbar-links > li > a {
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-}
-
-#navbar-links > li {
-    transition: transform 300ms;
-}
-
-
-#navbar-links {
-    gap: 1.5rem;
-}
-
-#logo-text {
-    letter-spacing: 6px;
-    font-weight: bold;
-    text-wrap: wrap;
-    font-size: 2em;
-}
 
 
 #main-image p, #main-image span {
@@ -48,5 +13,117 @@ nav > li {
     z-index: 2;
     background: #1F1A1A;
     border-radius: 0 0 2rem 0;
+}
 
+.learn-and-develop-logo {
+    letter-spacing: 0.3rem;
+}
+
+main {
+    color: white;
+}
+
+#about-us {
+    font-size: 1.5rem;
+}
+
+#our-advantages {
+    margin-left: 1rem;
+}
+
+h2 {
+    font-size: 2.5rem;
+}
+
+.carousel-custom-caption {
+  font-size: 1.2rem;
+  font-weight: bold;
+} 
+
+.item-image {
+    max-width: 100%;
+    max-height: 500px;
+}
+
+.course-select {
+    background-color: inherit;
+    color: gray;
+}
+.course-select:hover {
+    color: white;
+    cursor: pointer;
+}
+
+.course-select > option {
+    color: black;
+}
+
+.courses-list {
+    border: 2px solid white;
+    border-radius: 1rem;
+}
+
+.course-level {
+    background-color: white;
+    border-radius: 5px;
+    color: black;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.course {
+    all: unset; 
+    background-color: inherit;
+    width: 100%;
+    padding: 0;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    display: flex !important;
+    border-bottom: 1px solid white;
+}
+.course > * {
+    padding: 0 0.5rem;
+}
+
+.course:hover {
+    background-color: rgb(44, 44, 42);
+}
+
+.course-price {
+    width: 100%;
+    display: inline-block;
+    text-align: end;
+}
+
+.base-modal-window {
+    background-color: rgb(36, 36, 36);
+    color: white;
+}
+
+.modal-dialog-header {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.course-name {
+    color: white;
+}
+
+.level-logo {
+    background-color: rgb(69, 66, 66);
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15%;
+}
+
+.base-modal-window  h3 {
+    text-align: center;
+}
+
+.course-features {
+    list-style-type: none;
 }

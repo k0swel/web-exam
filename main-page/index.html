@@ -5,41 +5,222 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Learn and develop</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="./styles.css"/>
 </head>
   <body>
-    <header class="mx-5 text-white border-bottom border-primary">
-        <div class="row justify-content-between">
-            <div class="col-lg-6 mt-2 mb-2 col-sm-12 container justify-content-center align-items-center" id="logo">
-                <div class="row flex-nowrap align-items-center justify-content-center"> <!-- Добавлено align-items-center -->
-                    <p class="mb-0 col-auto" id="logo-text">Learn and Develop</p> <!-- Изменено на col-auto -->
-                    <svg class="col-auto" width="104" height="62" viewBox="0 0 104 62" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                        <rect x="0.853149" y="-0.829224" width="103.353" height="60.132" rx="30.066" transform="rotate(1.6032 0.853149 -0.829224)" fill="url(#pattern0_37_18)"/>
-                        <defs>
-                        <pattern id="pattern0_37_18" patternContentUnits="objectBoundingBox" width="1" height="1">
-                        <use xlink:href="#image0_37_18" transform="matrix(0.00159744 0 0 0.00274565 0 -0.0738408)"/>
-                        </pattern>
-                        <image id="image0_37_18" width="626" height="418" preserveAspectRatio="none" xlink:href="data:image/png;base64,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"/>
-                        </defs>
-                    </svg>
-                </div>
+    <header class="container text-white border-bottom ">
+        <nav id="navbar" class="navbar navbar-expand-md navbar-dark">
+            <div class="col-6">
+                <a href="" class="navbar-brand d-flex gap-3">
+                    <i class="bi bi-translate">
+                    </i>
+                    <span class="learn-and-develop-logo">Learn and Develop</span>
+                </a>
             </div>
-            <nav class="col-lg-6 col-sm-12 container d-flex align-items-center justify-content-center">
-                <div class="row justify-content-center" id="navbar-links">
-                    <li><a href="">Courses</a></li>
-                    <li><a href="">About Us</a></li>
-                    <li><a href="">Contact</a></li>
-                    <li><a href="">User Account</a></li>
-                </div>
-            </nav>
-        </div>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#links-header"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="links-header">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about-us">About us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#courses">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#teachers">User account</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
     </header>
     <main>
         <div id="main-image" class="container my-4 position-relative">
-            <div class="row">
-                <img class="position-relative" src="./images/blackman and woman.png" alt="Главная фотография страницы" style="width: 90%"/>
+            <div class="container row align-content-center align-items-center">
+                <img id="main-photo" class="position-relative" src="./images/blackman and woman.png" alt="Главная фотография страницы"/>
             </div>
         </div>
+        <section id="about-us" class="container">
+            <h2 class="">About us</h2>
+            <div id="our-advantages">
+                <p><span class="learn-and-develop-logo">Learn and Develop</span> - is a  language school offering in-depth study of the Russian language. Teaching is conducted using a communicative approach. The school's teachers are professionals with higher pedagogical education and native Russian speakers.</p>
+                <h3 class="">Our Advantages</h2>
+                <p>Below you can see all advantages which we can give you if you join to us!</p>
+                <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" style="width: 100%">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active" data-bs-interval="100000">
+                            <div class="d-flex justify-content-center item-image">
+                                <img src="./images/image1.png" class="d-block item-image" alt="какая-то комната">
+                            </div>
+                        <div class="carousel-caption d-none d-md-block carousel-custom-caption">
+                            <h5>Live interaction</h5>
+                            <p>Live communication with native speakers and mentors for effective learning.</p>
+                        </div>
+                        </div>
+                        <div class="carousel-item" data-bs-interval="100000">
+                            <div class="d-flex justify-content-center item-image">
+                                <img src="./images/kremlin.png" class="d-block item-image" alt="кремль">
+                            </div>
+                            <div class="carousel-caption d-none d-md-block carousel-custom-caption">
+                                <h5>Ensure prepare for tourism to Russia</h5>
+                                <p>Thanks to us, you will be able to communicate as a tourist without any problems..</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item" data-bs-interval="100000">
+                            <div class="d-flex justify-content-center">
+                                <img src="./images/TORFL.png" class="d-block item-image" alt="какая-то комната">
+                            </div>
+                            <div class="carousel-caption d-none d-md-block carousel-custom-caption" style="color: black">
+                                <!-- <h5>Teach to language exam TORFL</h5>
+                                <p>We'll prepare you to TORFL exam to get Russian citizenship</p> -->
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+            <div id="our-courses" class="mt-4">
+                <div class="row">
+                    <h3 class="col-md-4">Courses offered</h3>
+                    <div class="col-md-8">
+                        <select class="form-select course-select" aria-label=".form-select-lg example">
+                            <option value="None" selected>Choose wish Russian level</option>
+                            <option value="B1">B1</option>
+                            <option value="C1">C1</option>
+                            <option value="C2">C2</option>
+                        </select>
+                    </div>
+                    <div class="courses-list col-md-12 mt-4">
+                        <button type="button" class="course flex-nowrap" data-level="B1" data-bs-toggle="modal" href="#beginnerCourseToggle" role="button">
+                            <div class="col-md-9 col-sm-9">
+                                <span class="course-name-name">Beginner Course</span>
+                                <span class="course-level">B1</span>
+                            </div>
+                            <div class="col-md-3 col-sm-3">
+                                <span class='course-price'>1000$ per semester</span>
+                            </div>
+                        </button>
+                        <button type="button" class="course flex-nowrap" data-level="C1" data-bs-toggle="modal" href="#IntermediateCourseToggle" role="button">
+                            <div class="col-md-9 col-sm-9">
+                                <span class="course-name-name">Intermediate Course</span>
+                                <span class="course-level">C1</span>
+                            </div>
+                            <div class="col-md-3 col-sm-3">
+                                <span class='course-price'>1500$ per semester</span>
+                            </div>
+                        </button>
+                        <button type="button" class="course flex-nowrap" data-level="С1" data-bs-toggle="modal" href="#AdvancedCourseToggle" role="button">
+                            <div class="col-md-9 col-sm-9">
+                                <span class="course-name-name">Advanced Course</span>
+                                <span class="course-level">C2</span>
+                            </div>
+                            <div class="col-md-3 col-sm-3">
+                                <span class='course-price'>2000$ per semester</span>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+    <section id="modal-windows">
+        <div class="modal fade" id="beginnerCourseToggle" aria-hidden="true" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content base-modal-window">
+                    <div class="modal-header modal-dialog-header">
+                        <span class="course-name">Beginner Course</span>
+                        <span class="course-level">B1</span>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row cl-sm-12 justify-content-center">
+                            <div class="level-logo">
+                                <i class="bi bi-graph-up text-white fs-3"></i>
+                            </div>
+                            <h3>Beginner Course</h3>
+                            <p>For those who already have basic knowledge. Deepening grammar, expanding vocabulary.</p>
+                            <ul class="course-features">
+                                <li><i class="bi bi-check-circle text-success me-2"></i><span>Duration: 4 months;</span></li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i><span>Classes: 4 times per week each 1.5 hours;</span></li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i><span>Price: 1000$ per semester;</span></li>                                
+                            </ul>                    
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+         <div class="modal fade" id="IntermediateCourseToggle" aria-hidden="true" aria-labelledby="IntermediateModalToggleLabel" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content base-modal-window">
+                    <div class="modal-header modal-dialog-header">
+                        <span class="course-name">Intermediate Course</span>
+                        <span class="course-level">C1</span>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row cl-sm-12 justify-content-center">
+                            <div class="level-logo">
+                                <i class="bi bi-graph-up text-white fs-3"></i>
+                            </div>
+                            <h3>Intermediate Course</h3>
+                            <p>Improving language skills, learning the subtleties of the Russian language, idioms and phraseological units.</p>
+                            <ul class="course-features">
+                                <li><i class="bi bi-check-circle text-success me-2"></i><span>Duration: 5 months;</span></li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i><span>Classes: 4 times per week each 3 hours;</span></li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i><span>Price: 1500$ per semester;</span></li>                                
+                            </ul>                    
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+         <div class="modal fade" id="AdvancedCourseToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel3" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content base-modal-window">
+                    <div class="modal-header modal-dialog-header">
+                        <span class="course-name">Advanced Course</span>
+                        <span class="course-level">C2</span>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row cl-sm-12 justify-content-center">
+                            <div class="level-logo">
+                                <i class="bi bi-graph-up text-white fs-3"></i>
+                            </div>
+                            <h3>Advanced Course</h3>
+                            <p>A specialized course for business communication, negotiation and business correspondence.</p>
+                            <ul class="course-features">
+                                <li><i class="bi bi-check-circle text-success me-2"></i><span>Duration: 6 months;</span></li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i><span>Classes: 4 times per week each 3 hours;</span></li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i><span>Price: 2000$ per semester;</span></li>                                
+                            </ul>                    
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
   </body>
