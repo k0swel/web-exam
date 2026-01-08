@@ -37,6 +37,30 @@
             </div>
         </nav>
     </header>
+        <section id="notifications">
+            <div class="toast-container my-custom-toast-container">
+                <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-header my-custom-toast-header">
+                        <strong class="me-auto">Error.</strong>
+                        <small class="text-muted">just now</small>
+                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                    <div class="toast-body my-custom-toast-body">
+                        You are already chose the course! Try cancel choice and choose again.
+                    </div>
+                </div>
+                <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-header">
+                        <strong class="me-auto">Bootstrap</strong>
+                        <small class="text-muted">2 seconds ago</small>
+                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                    <div class="toast-body">
+                        Heads up, toasts will stack automatically
+                    </div>
+                </div>
+            </div>
+        </section>
     <main>
         <div id="main-image" class="container my-4 position-relative">
             <div class="container row align-content-center align-items-center">
@@ -106,7 +130,7 @@
                         </select>
                     </div>
                     <div class="courses-list col-md-12 mt-4">
-                        <button type="button" class="course flex-nowrap" data-level="B1" data-bs-toggle="modal" href="#beginnerCourseToggle" role="button">
+                        <button type="button" id="course-b1" class="course flex-nowrap" data-level="B1" data-bs-toggle="modal" href="#beginnerCourseToggle" role="button">
                             <div class="col-md-9 col-sm-9">
                                 <span class="course-name-name">Beginner Course</span>
                                 <span class="course-level">B1</span>
@@ -115,7 +139,7 @@
                                 <span class='course-price'>1000$ per semester</span>
                             </div>
                         </button>
-                        <button type="button" class="course flex-nowrap" data-level="C1" data-bs-toggle="modal" href="#IntermediateCourseToggle" role="button">
+                        <button type="button" id="course-c1" class="course flex-nowrap" data-level="C1" data-bs-toggle="modal" href="#IntermediateCourseToggle" role="button">
                             <div class="col-md-9 col-sm-9">
                                 <span class="course-name-name">Intermediate Course</span>
                                 <span class="course-level">C1</span>
@@ -124,7 +148,7 @@
                                 <span class='course-price'>1500$ per semester</span>
                             </div>
                         </button>
-                        <button type="button" class="course flex-nowrap" data-level="С1" data-bs-toggle="modal" href="#AdvancedCourseToggle" role="button">
+                        <button type="button" id="course-c2" class="course flex-nowrap" data-level="C2" data-bs-toggle="modal" href="#AdvancedCourseToggle" role="button">
                             <div class="col-md-9 col-sm-9">
                                 <span class="course-name-name">Advanced Course</span>
                                 <span class="course-level">C2</span>
@@ -133,6 +157,95 @@
                                 <span class='course-price'>2000$ per semester</span>
                             </div>
                         </button>
+                    </div>
+                </div>
+            </div>
+            <div id="our-teachers" class="mt-4">
+                <div class="row">
+                    <h3 class="col-3 mb-md-0 mb-3">Our Teachers</h3>
+                    <div class="col-9">
+                        <div class="row g-2 justify-content-sm-stretch justify-content-lg-end">
+                            <div class="col-lg-3 col-sm-12">
+                                <div class="input-group">
+                                    <span class="input-group-text teachers-span">Experience</span>
+                                    <input type="text" class="form-control teachers-input">
+                                </div>
+                            </div>
+                            <div class="col-lg-9 col-sm-12">
+                                <div class="input-group">
+                                    <span class="input-group-text teachers-span">Qualification</span>
+                                    <select class="form-select col-auto teachers-input">
+                                        <option value="None">Choose qualification</option>
+                                        <option value="qualification-b1">B1</option>
+                                        <option value="qualification-c1">C1</option>
+                                        <option value="qualification-c2">C2</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="teachers-cards row mt-1 g-4"> 
+                    <div class="col-sm-12 col-md-6 col-lg-4" data-experience="15" data-level="B1-C2"> 
+                        <div class="teacher-card text-center"> 
+                            <div class="teacher-photo mx-auto"> 
+                                <img src="https://images.unsplash.com/photo-1580894732444-8ecded7900cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Anna Ivanova">
+                            </div>
+                            <h4 class="card-title mt-3">Anna Ivanova</h4>
+                            <p class="card-text">Кандидат филологических наук</p>
+                            <p class="mt-1">Teaching experience: 15 years. Major: Russian grammar and phonetics.</p>
+                            <div class="skills mt-1">
+                                <span class="badge bg-primary me-1">B1-С2</span>
+                                <span class="badge bg-primary me-1">TORFL</span>
+                                <span class="badge bg-primary">Business Russian</span>
+                            </div>
+                            <button type="button" class="btn btn-success mt-3">Order class</button>
+                        </div>
+                    </div>
+                    
+                    <div class="teacher-card col-sm-12 col-md-6 col-lg-4 text-center" data-experience="20" data-level="B1-C2">
+                        <div class="teacher-photo mx-auto">
+                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Dmitry Petrov">
+                        </div>
+                        <h4 class="card-title mt-3">Dmitry Petrov</h4>
+                        <p class="card-text">Doctor of Philology</p>
+                        <p class="mt-1">Teaching experience: 20 years. Major: Russia Literature and Culture.</p>
+                        <div class="skills mt-1">
+                            <span class="badge bg-primary me-1">B1-С2</span>
+                            <span class="badge bg-primary me-1">Literature</span>
+                            <span class="badge bg-primary">Culture</span>
+                        </div>
+                        <button type="button" class="btn btn-success mt-3">Order class</button>
+                    </div>
+
+                    <div class="teacher-card text-center col-sm-12 col-md-6 col-lg-4" data-experience="10" data-level="B1-B2">
+                        <div class="teacher-photo mx-auto">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1376&q=80" alt="Dmitry Petrov">
+                        </div>
+                        <h4 class="card-title mt-3">Elena Smirnova</h4>
+                        <p class="card-text">Doctor of Philology</p>
+                        <p class="mt-1">Teaching experience: 10 years. Specialization: spoken Russian and preparation for the TRKI.</p>
+                        <div class="skills mt-1">
+                            <span class="badge bg-primary me-1">B1-B2</span>
+                            <span class="badge bg-primary me-1">TORFL</span>
+                            <span class="badge bg-primary">Speech club</span>
+                        </div>
+                        <button type="button" class="btn btn-success mt-3">Order class</button>
+                    </div>
+
+                    <div class="teacher-card text-center col-sm-12 col-md-6 col-lg-4" data-experience="10" data-level="B1-C2">
+                        <div class="teacher-photo mx-auto">
+                            <img src="https://avatars.mds.yandex.net/i?id=b96916199f2c935ee0d6ee9325912c18469aed8d-5541108-images-thumbs&n=13" alt="Dmitry Petrov">
+                        </div>
+                        <h4 class="card-title mt-3">Sergey Kuztetsov</h4>
+                        <p class="card-text">Candidat of Philology</p>
+                        <p class="mt-1">Teaching experience: 12 years. Specialization: spoken Russian and professional speech.</p>
+                        <div class="skills mt-1">
+                            <span class="badge bg-primary me-1">B1-C2</span>
+                            <span class="badge bg-primary me-1">Business Russian</span>
+                            <span class="badge bg-primary">Professional speech</span>
+                        </div>
+                        <button type="button" class="btn btn-success mt-3">Order class</button>
                     </div>
                 </div>
             </div>
@@ -161,7 +274,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">OK</button>
+                        <button class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                        <button class="btn btn-success" data-btn-type="select" data-course-id="course-b1" data-bs-dismiss="modal" aria-label="Select">Select</button>
                     </div>
                 </div>
             </div>
@@ -188,7 +302,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">OK</button>
+                        <button class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                        <button class="btn btn-success" data-btn-type="select" data-course-id="course-c1" data-bs-dismiss="modal" aria-label="Select">Select</button>
                     </div>
                 </div>
             </div>
@@ -215,7 +330,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">OK</button>
+                        <button class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                        <button class="btn btn-success" data-btn-type="select" data-course-id="course-c2" data-bs-dismiss="modal" aria-label="Select">Select</button>
                     </div>
                 </div>
             </div>
@@ -223,5 +339,8 @@
     </section>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-  </body>
+    <script src="./scripts/find-courses.js"></script>
+    <script type="module" src="./scripts/notifications.js"></script>
+    <script type="module" src="./scripts/select-course.js"></script>
+</body>
 </html>

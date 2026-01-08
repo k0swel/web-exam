@@ -4,6 +4,7 @@ body {
 
 
 
+
 #main-image p, #main-image span {
     display: block;
 }
@@ -126,4 +127,76 @@ h2 {
 
 .course-features {
     list-style-type: none;
+}
+
+.hide {
+    display: none !important;
+}
+
+.my-custom-toast-header {
+    background-color: grey;
+    color: white;
+}
+
+.my-custom-toast-body {
+    background-color: rgb(155, 150, 150);
+    padding: 0.5rem 1rem;
+}
+
+.my-custom-toast-container {
+    position: fixed;
+    top: 0;
+}
+
+.active-course {
+    background-color: rgb(4, 63, 4);
+}
+
+.teachers-span {
+    background-color: transparent;
+    color: white;
+}
+
+.teachers-input {
+    background-color: rgb(40, 39, 39);
+    color: white;
+}
+
+.teachers-input:focus {
+    background-color: rgb(40, 39, 39);
+    color: white;
+}
+
+
+.teacher-photo {
+    width: 55%;
+    padding: 0.3rem;
+    background-color: gray;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+}
+
+.teacher-photo img {
+    max-width: 100%;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    object-fit: fill;
+}
+
+.teacher-card {
+    text-align: center;
+    font-size: 20px;
+    padding: 1rem;
+    border: 1px solid grey;
+    border-radius: 1rem;
+    box-shadow: 0 44px 66px rgba(255, 255, 255, 0.1);
+    height: 100%;
+}
+
+.card-title {
+    font-size: 1.7em;
+}
+
+.card-text {
+    font-size: 1em;
 }
