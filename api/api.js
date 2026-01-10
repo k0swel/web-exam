@@ -8,3 +8,12 @@ export async function fetch_tutors_API() {
 export async function fetch_courses_API() {
     return fetch(`http://exam-api-courses.std-900.ist.mospolytech.ru/api/courses${API_KEY}`).then(response => response.json());
 }
+
+export async function fetch_specific_course_API(course_id) {
+    const request = await fetch(`http://exam-api-courses.std-900.ist.mospolytech.ru/api/courses${API_KEY}`).then(response => response.json());
+    for (const entry of request) {
+        if ( entry['id'] == course_id ) {
+            return entry;
+        }
+    }
+}
