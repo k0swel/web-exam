@@ -168,31 +168,20 @@
                             <div class="col-lg-3 col-sm-12">
                                 <div class="input-group">
                                     <span class="input-group-text teachers-span">Experience</span>
-                                    <input type="text" class="form-control teachers-input">
-                                </div>
-                            </div>
-                            <div class="col-lg-9 col-sm-12">
-                                <div class="input-group">
-                                    <span class="input-group-text teachers-span">Qualification</span>
-                                    <select class="form-select col-auto teachers-input">
-                                        <option value="None">Choose qualification</option>
-                                        <option value="qualification-b1">B1</option>
-                                        <option value="qualification-c1">C1</option>
-                                        <option value="qualification-c2">C2</option>
-                                    </select>
+                                    <input type="text" id="experience-input" class="form-control teachers-input">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="teachers-cards row mt-1 g-4"> 
-                    <div class="col-sm-12 col-md-6 col-lg-4" data-experience="15" data-level="B1-C2"> 
+                    <div class="teacher-card-dummy col-sm-12 col-md-6 col-lg-4" data-experience="15" data-course-level="B1,C1,C2"> 
                         <div class="teacher-card text-center"> 
                             <div class="teacher-photo mx-auto"> 
-                                <img src="https://images.unsplash.com/photo-1580894732444-8ecded7900cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Anna Ivanova">
+                                <img src="./images/anna_ivanova.jpeg" alt="Anna Ivanova">
                             </div>
                             <h4 class="card-title mt-3">Anna Ivanova</h4>
-                            <p class="card-text">Кандидат филологических наук</p>
+                            <p class="card-text">Candidat of Philology</p>
                             <p class="mt-1">Teaching experience: 15 years. Major: Russian grammar and phonetics.</p>
                             <div class="skills mt-1">
                                 <span class="badge bg-primary me-1">B1-С2</span>
@@ -203,49 +192,55 @@
                         </div>
                     </div>
                     
-                    <div class="teacher-card col-sm-12 col-md-6 col-lg-4 text-center" data-experience="20" data-level="B1-C2">
-                        <div class="teacher-photo mx-auto">
-                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Dmitry Petrov">
+                    <div class="teacher-card-dummy col-sm-12 col-md-6 col-lg-4 text-center" data-experience="20" data-course-level="B1,C1,C2">
+                        <div class="teacher-card">
+                            <div class="teacher-photo mx-auto">
+                                <img src="./images/dmitry_petrov.webp" alt="Dmitry Petrov">
+                            </div>
+                            <h4 class="card-title mt-3">Dmitry Petrov</h4>
+                            <p class="card-text">Doctor of Philology</p>
+                            <p class="mt-1">Teaching experience: 20 years. Major: Russia Literature and Culture.</p>
+                            <div class="skills mt-1">
+                                <span class="badge bg-primary me-1">B1-С2</span>
+                                <span class="badge bg-primary me-1">Literature</span>
+                                <span class="badge bg-primary">Culture</span>
+                            </div>
+                            <button type="button" class="btn btn-success mt-3">Order class</button>
                         </div>
-                        <h4 class="card-title mt-3">Dmitry Petrov</h4>
-                        <p class="card-text">Doctor of Philology</p>
-                        <p class="mt-1">Teaching experience: 20 years. Major: Russia Literature and Culture.</p>
-                        <div class="skills mt-1">
-                            <span class="badge bg-primary me-1">B1-С2</span>
-                            <span class="badge bg-primary me-1">Literature</span>
-                            <span class="badge bg-primary">Culture</span>
-                        </div>
-                        <button type="button" class="btn btn-success mt-3">Order class</button>
                     </div>
 
-                    <div class="teacher-card text-center col-sm-12 col-md-6 col-lg-4" data-experience="10" data-level="B1-B2">
-                        <div class="teacher-photo mx-auto">
-                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1376&q=80" alt="Dmitry Petrov">
+                    <div class="teacher-card-dummy text-center col-sm-12 col-md-6 col-lg-4" data-experience="10" data-course-level="B1,B2">
+                        <div class="teacher-card">
+                            <div class="teacher-photo mx-auto">
+                                <img src="./images/elena_smirnova.jpg" alt="Dmitry Petrov">
+                            </div>
+                            <h4 class="card-title mt-3">Elena Smirnova</h4>
+                            <p class="card-text">Doctor of Philology</p>
+                            <p class="mt-1">Teaching experience: 10 years. Specialization: spoken Russian and preparation for the TRKI.</p>
+                            <div class="skills mt-1">
+                                <span class="badge bg-primary me-1">B1-B2</span>
+                                <span class="badge bg-primary me-1">TORFL</span>
+                                <span class="badge bg-primary">Speech club</span>
+                            </div>
+                            <button type="button" class="btn btn-success mt-3">Order class</button>
                         </div>
-                        <h4 class="card-title mt-3">Elena Smirnova</h4>
-                        <p class="card-text">Doctor of Philology</p>
-                        <p class="mt-1">Teaching experience: 10 years. Specialization: spoken Russian and preparation for the TRKI.</p>
-                        <div class="skills mt-1">
-                            <span class="badge bg-primary me-1">B1-B2</span>
-                            <span class="badge bg-primary me-1">TORFL</span>
-                            <span class="badge bg-primary">Speech club</span>
-                        </div>
-                        <button type="button" class="btn btn-success mt-3">Order class</button>
                     </div>
 
-                    <div class="teacher-card text-center col-sm-12 col-md-6 col-lg-4" data-experience="10" data-level="B1-C2">
-                        <div class="teacher-photo mx-auto">
-                            <img src="https://avatars.mds.yandex.net/i?id=b96916199f2c935ee0d6ee9325912c18469aed8d-5541108-images-thumbs&n=13" alt="Dmitry Petrov">
+                    <div class="teacher-card-dummy col-sm-12 col-md-6 col-lg-4" data-experience="12" data-course-level="B1,C1,C2">
+                        <div class="teacher-card">
+                            <div class="teacher-photo mx-auto">
+                                <img src="./images/sergey_kuznetsov.png" alt="Dmitry Petrov">
+                            </div>
+                            <h4 class="card-title mt-3">Sergey Kuztetsov</h4>
+                            <p class="card-text">Candidat of Philology</p>
+                            <p class="mt-1">Teaching experience: 12 years. Specialization: spoken Russian and professional speech.</p>
+                            <div class="skills mt-1">
+                                <span class="badge bg-primary me-1">B1-C2</span>
+                                <span class="badge bg-primary me-1">Business Russian</span>
+                                <span class="badge bg-primary">Professional speech</span>
+                            </div>
+                            <button type="button" class="btn btn-success mt-3">Order class</button>
                         </div>
-                        <h4 class="card-title mt-3">Sergey Kuztetsov</h4>
-                        <p class="card-text">Candidat of Philology</p>
-                        <p class="mt-1">Teaching experience: 12 years. Specialization: spoken Russian and professional speech.</p>
-                        <div class="skills mt-1">
-                            <span class="badge bg-primary me-1">B1-C2</span>
-                            <span class="badge bg-primary me-1">Business Russian</span>
-                            <span class="badge bg-primary">Professional speech</span>
-                        </div>
-                        <button type="button" class="btn btn-success mt-3">Order class</button>
                     </div>
                 </div>
             </div>
@@ -342,5 +337,6 @@
     <script src="./scripts/find-courses.js"></script>
     <script type="module" src="./scripts/notifications.js"></script>
     <script type="module" src="./scripts/select-course.js"></script>
+    <script src="./scripts/find-teacher-by-experience.js"></script>
 </body>
 </html>

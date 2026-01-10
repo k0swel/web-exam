@@ -177,7 +177,7 @@ h2 {
 }
 
 .teacher-photo img {
-    max-width: 100%;
+    width: 100%;
     border-radius: 50%;
     aspect-ratio: 1 / 1;
     object-fit: fill;
@@ -191,6 +191,7 @@ h2 {
     border-radius: 1rem;
     box-shadow: 0 44px 66px rgba(255, 255, 255, 0.1);
     height: 100%;
+    width: 100%;
 }
 
 .card-title {
