@@ -192,6 +192,17 @@ h2 {
     box-shadow: 0 44px 66px rgba(255, 255, 255, 0.1);
     height: 100%;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.teacher-card > *:not(.order-button) {
+    flex: 0 0 auto;
+}
+
+.order-button {
+    align-self: center;
+    justify-self: flex-end;
 }
 
 .card-title {
@@ -200,4 +211,8 @@ h2 {
 
 .card-text {
     font-size: 1em;
+}
+
+.footer {
+    color: white;
 }

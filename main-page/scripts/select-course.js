@@ -1,20 +1,17 @@
 import { notifications } from './notifications.js';
-var is_selected_course = false;
-var selected_course_level = null;
-const experience_input = document.getElementById('experience-input');
-
 
 function toggleButton(action, button) {
     if (action == 'toselect') {
         button.classList.remove('btn-danger');
         button.classList.add('btn-success');
+        button.textContent = 'Select';
     }
     else if (action == 'tounselect') {
         button.classList.remove('btn-success');
         button.classList.add('btn-danger');
+        button.textContent = 'Cancel Select';
     }
 }
-
 
 function find_teachers_not_by_course(course_level) {
     const teachers_card = Array.from(document.getElementsByClassName('teacher-card-dummy'));
@@ -30,34 +27,24 @@ function find_teachers_not_by_course(course_level) {
     return teacher_not_by_course_level;
 }
 
-function find_teachers_by_course(course_level) {
-    const teachers_card = Array.from(document.getElementsByClassName('teacher-card-dummy'));
-    const teacher_by_course_level = [];
-    
-    teachers_card.forEach((value) => {
-        const teacher_courses = value.getAttribute('data-course-level').split(',');
-        if (teacher_courses.includes(course_level)) {
-            teacher_by_course_level.push(value);
-        }
-    });
-    
-    return teacher_by_course_level;
-}
-
 function resetExperienceFilter() {
+    const experience_input = document.getElementById('experience-input');
     if (experience_input) {
         experience_input.value = "";
-        
-        const teacher_cards = Array.from(document.getElementsByClassName('teacher-card-dummy'));
-        teacher_cards.forEach((card) => {
-            if (!card.classList.contains('hide')) {
-                card.classList.remove('hide');
-            }
-        });
     }
 }
 
+function showAllTeachers() {
+    const all_teachers = Array.from(document.getElementsByClassName('teacher-card-dummy'));
+    all_teachers.forEach((teacher) => {
+        teacher.classList.remove('hide');
+    });
+}
+
 function main() {
+    let selectedCourseId = null;
+    let selectedCourseButton = null;
+    
     const buttonsInModalWindow = document.querySelectorAll('button[data-btn-type]');
     
     buttonsInModalWindow.forEach((element) => {
@@ -66,12 +53,16 @@ function main() {
             const btnCourse = document.getElementById(element.getAttribute('data-course-id'));
             const course_level = btnCourse.getAttribute('data-level');
             
-            if (btnType == 'select' && is_selected_course == false) {
+            if (btnType === 'select') {
+                if (selectedCourseId && selectedCourseId !== btnCourse.id) {
+                    notifications['course_already_selected'].show();
+                    return;
+                }
+                
                 element.setAttribute('data-btn-type', 'unselect');
-                element.textContent = 'Cancel Select';
                 toggleButton('tounselect', element);
-                is_selected_course = true;
-                selected_course_level = course_level;
+                selectedCourseId = btnCourse.id;
+                selectedCourseButton = element;
                 
                 find_teachers_not_by_course(course_level).forEach((teacher) => {
                     teacher.classList.add('hide');
@@ -79,27 +70,33 @@ function main() {
                 
                 resetExperienceFilter();
                 
-            } else if (btnType == 'select' && is_selected_course == true) {
-                notifications['404_course_already_chosed'].show();
+                btnCourse.classList.add('active-course');
                 
-            } else if (btnType == 'unselect' && is_selected_course == true) {
+            } else if (btnType === 'unselect') {
                 element.setAttribute('data-btn-type', 'select');
-                element.textContent = 'Select';
                 toggleButton('toselect', element);
-                is_selected_course = false;
-                selected_course_level = null;
+                selectedCourseId = null;
+                selectedCourseButton = null;
                 
-                const all_teachers = Array.from(document.getElementsByClassName('teacher-card-dummy'));
-                all_teachers.forEach((teacher) => {
-                    teacher.classList.remove('hide');
-                });
+                showAllTeachers();
                 
                 resetExperienceFilter();
+                
+                btnCourse.classList.remove('active-course');
             }
-            
-            btnCourse.classList.toggle('active-course');
         });
     });
+    
+    const courseSelect = document.querySelector('.course-select');
+    if (courseSelect) {
+        courseSelect.addEventListener('change', () => {
+            if (selectedCourseId) {
+                if (selectedCourseButton) {
+                    selectedCourseButton.click();
+                }
+            }
+        });
+    }
 }
 
 main();

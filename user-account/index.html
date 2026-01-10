@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Learn and Develop - Personal Account</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./styles.css"/>
+</head>
+<body>
+    <header class="container text-white border-bottom">
+        <nav id="navbar" class="navbar navbar-expand-md navbar-dark">
+            <div class="col-6">
+                <a href="index.html" class="navbar-brand d-flex gap-3">
+                    <i class="bi bi-translate"></i>
+                    <span class="learn-and-develop-logo">Learn and Develop</span>
+                </a>
+            </div>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#links-header">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="links-header">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/main-page/index.html#header">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/main-page/index.html#about-us" class="nav-link"></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/user-account/index.html">My Account</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section id="notifications">
+        <div class="toast-container my-custom-toast-container">
+        </div>
+    </section>
+
+    <main class="container py-4">
+        <div class="user-info-card">
+            <div class="row align-items-center">
+                <div class="col-md-3 text-center mb-3 mb-md-0">
+                    <img src="/user-account/images/github-default-avatar.png" 
+                         alt="User Avatar" class="user-avatar">
+                </div>
+                <div class="col-md-6">
+                    <h2 class="mb-2">Roman Leonenko</h2>
+                    <p class=" mb-1">
+                        <i class="bi bi-envelope me-2"></i> romanleonenko32@gmail.com
+                    </p>
+                    <p class="mb-1">
+                        <i class="bi bi-telephone me-2"></i> +7 (953) 294-32-37
+                    </p>
+                </div>
+                <div class="col-md-3">
+                    <div class="d-grid gap-2">
+                        <a class="btn btn-primary" href="#orders-table">
+                            <i class="bi bi-card-text"></i> My orders
+                        </a>
+                        <a href="/main-page/index.html#our-teachers" class="btn btn-outline-light">
+                            <i class="bi bi-plus-circle me-2"></i>New Order
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="orders-table" class="orders-table p-4 mb-4">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h3 class="mb-0">My Orders</h3>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Course Name</th>
+                            <th>Order Date</th>
+                            <th>Lesson Date</th>
+                            <th>Status</th>
+                            <th>Total Price</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ordersTableBody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <div class="modal fade" id="orderDetailsModal" tabindex="-1" aria-labelledby="orderDetailsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content base-modal-window">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="orderDetailsModalLabel">Order Details</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Order Information</h6>
+                            <p><strong>Order ID:</strong> <span id="detailOrderId">-</span></p>
+                            <p><strong>Course:</strong> <span id="detailCourseName">-</span></p>
+                            <p><strong>Teacher:</strong> <span id="detailTeacher">-</span></p>
+                            <p><strong>Order Date:</strong> <span id="detailOrderDate">-</span></p>
+                            <p><strong>Lesson Date:</strong> <span id="detailLessonDate">-</span></p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Pricing Details</h6>
+                            <p><strong>Base Price:</strong> $<span id="detailBasePrice">-</span></p>
+                            <p><strong>Discount:</strong> $<span id="detailDiscount" class="text-success">-</span></p>
+                            <p><strong>Surcharge:</strong> $<span id="detailSurcharge" class="text-danger">-</span></p>
+                            <hr>
+                            <p><strong>Total Price:</strong> $<span id="detailTotalPrice" class="fw-bold">-</span></p>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <h6>Description</h6>
+                        <p id="detailDescription">No description available.</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Print Invoice</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="editOrderModal" tabindex="-1" aria-labelledby="editOrderModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content base-modal-window">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editOrderModalLabel">Edit Order</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editOrderForm">
+                        <input type="hidden" id="editOrderId">
+                        <div class="mb-3">
+                            <label for="editLessonDate" class="form-label">Lesson Date</label>
+                            <input type="date" class="form-control" id="editLessonDate" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editTeacher" class="form-label">Select Teacher</label>
+                            <select class="form-control" id="editTeacher" required>
+                                <option value="">Choose teacher</option>
+                                <option value="Anna Ivanova">Anna Ivanova</option>
+                                <option value="Dmitry Petrov">Dmitry Petrov</option>
+                                <option value="Elena Smirnova">Elena Smirnova</option>
+                                <option value="Sergey Kuztetsov">Sergey Kuztetsov</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editNotes" class="form-label">Additional Notes</label>
+                            <textarea class="form-control" id="editNotes" rows="3"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="saveEditBtn">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-labelledby="deleteConfirmModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content base-modal-window">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteConfirmModalLabel">Confirm Deletion</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete order <strong id="deleteOrderNumber">#000</strong>?</p>
+                    <p class="text-danger"><small>This action cannot be undone.</small></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Delete Order</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="footer" class="footer mt-5 py-5 border-top border-secondary">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="bi bi-translate fs-3 me-2"></i>
+                        <span class="learn-and-develop-logo fs-4">Learn and Develop</span>
+                    </div>
+                    <p>
+                        Language school offering in-depth study of the Russian language. 
+                        Professional teachers with higher pedagogical education.
+                    </p>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="mb-3">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="/main-page/index.html#header" class="text-decoration-none hover-white">Home</a></li>
+                        <li class="mb-2"><a href="/main-page/index.html#about-us" class="text-decoration-none  hover-white">About Us</a></li>
+                        <li class="mb-2"><a href="/main-page/index.html#our-courses" class="text-decoration-none  hover-white">Courses</a></li>
+                        <li class="mb-2"><a href="/main-page/index.html#our-teachers" class="text-decoration-none hover-white">Teachers</a></li>
+                        <li><a href="#footer" class="text-decoration-none hover-white">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="mb-3">Follow Us</h5>
+                    <p class="mb-3">Stay connected with us on social media</p>
+                    <div class="social-icons d-flex gap-3">
+                        <a href="https://t.me/k0swel" target="_blank" class="social-icon telegram">
+                            <i class="bi bi-telegram fs-4"></i>
+                        </a>
+                        <a href="https://github.com/k0swel" target="_blank" class="social-icon github">
+                            <i class="bi bi-github fs-4"></i>
+                        </a>
+                        <a href="https://instagram.com/k0swel" target="_blank" class="social-icon instagram">
+                            <i class="bi bi-instagram fs-4"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row pt-4 mt-4 border-top border-secondary">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">
+                        &copy; 2026 Learn and Develop.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <!-- <script type="module" src="./scripts/account-notifications.js"></script>
+    <script type="module" src="./scripts/account-data.js"></script>
+    <script type="module" src="./scripts/account-table.js"></script>
+    <script type="module" src="./scripts/account-main.js"></script> -->
+</body>
+</html>

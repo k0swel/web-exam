@@ -1,0 +1,222 @@
+body {
+    background: linear-gradient(90.38deg, #1F1A1A 17.08%, #1A1919 33.05%, #1D1D1D 50.9%, #1B1A1A 69.21%, #211D1D 84.24%, #0D0C0C 99.27%); 
+    color: white;
+}
+.user-info-card {
+    background: rgba(40, 39, 39, 0.8);
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.user-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #0d6efd;
+}
+
+.orders-table {
+    background: rgba(40, 39, 39, 0.8);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.orders-table th {
+    background-color: rgba(13, 110, 253, 0.2);
+    color: white;
+    font-weight: 600;
+    border-bottom: 2px solid #0d6efd;
+}
+
+.orders-table td {
+    color: white;
+    background-color: inherit;    
+}
+
+.orders-table tbody tr {
+    transition: background-color 0.3s;
+}
+
+.orders-table tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.status-badge {
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.status-active {
+    background-color: rgba(25, 135, 84, 0.2);
+    color: #75b798;
+}
+
+.status-completed {
+    background-color: rgba(13, 110, 253, 0.2);
+    color: #6ea8fe;
+}
+
+.status-cancelled {
+    background-color: rgba(220, 53, 69, 0.2);
+    color: #ea868f;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.pagination-custom .page-link {
+    background-color: rgba(40, 39, 39, 0.8);
+    color: white;
+    border: 1px solid #555;
+}
+
+.pagination-custom .page-link:hover {
+    background-color: rgba(13, 110, 253, 0.3);
+    color: white;
+}
+
+.pagination-custom .page-item.active .page-link {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.statistics-card {
+    background: rgba(40, 39, 39, 0.8);
+    border-radius: 15px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    transition: transform 0.3s;
+}
+
+.statistics-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #0d6efd;
+}
+
+.progress-custom {
+    height: 10px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.progress-custom .progress-bar {
+    border-radius: 5px;
+}
+
+/* Добавьте в конец styles.css */
+
+/* Стили для личного кабинета */
+.user-info-card {
+    background: rgba(40, 39, 39, 0.8);
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.user-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #0d6efd;
+}
+
+.orders-table {
+    background: rgba(40, 39, 39, 0.8);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.orders-table th {
+    background-color: rgba(13, 110, 253, 0.2);
+    color: white;
+    font-weight: 600;
+    border-bottom: 2px solid #0d6efd;
+}
+
+.orders-table td {
+    color: #ddd;
+    vertical-align: middle;
+}
+
+.orders-table tbody tr {
+    transition: background-color 0.3s;
+}
+
+.orders-table tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.status-badge {
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.status-active {
+    background-color: rgba(25, 135, 84, 0.2);
+    color: #75b798;
+}
+
+.status-completed {
+    background-color: rgba(13, 110, 253, 0.2);
+    color: #6ea8fe;
+}
+
+.status-cancelled {
+    background-color: rgba(220, 53, 69, 0.2);
+    color: #ea868f;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.pagination-custom .page-link {
+    background-color: rgba(40, 39, 39, 0.8);
+    color: white;
+    border: 1px solid #555;
+}
+
+.pagination-custom .page-link:hover {
+    background-color: rgba(13, 110, 253, 0.3);
+    color: white;
+}
+
+.pagination-custom .page-item.active .page-link {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.base-modal-window .form-control {
+    background-color: rgb(40, 39, 39);
+    color: white;
+    border: 1px solid #666;
+}
+
+.base-modal-window .form-control:focus {
+    background-color: rgb(50, 49, 49);
+    color: white;
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.base-modal-window .form-label {
+    color: white;
+    font-weight: 500;
+}
