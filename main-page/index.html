@@ -232,47 +232,45 @@
     </footer>
     <section id="modal-windows">
         <div class="modal fade" id="orderCourseModalWindow" tabindex="-1">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Order the course</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <label>Course name
-                                <input type="text" name="courseName" id="courseName-input"/>
-                            </label>
-                            <label>InstructorName
-                                <input type="text" name="userName" id="userName-input"/>
-                            </label>
-                            <label>Start Date
-                                <select name="startDate" id="startDate-select">
-                                    <!-- эту дичь заполняет js -->
-                                </select>
-                            </label>
-                            <label>Time for classes
-                                <select name="timeForClasses" id="timeForClasses-select">
-                                    <!-- эту дичь заполняет js -->
-                                </select>
-                            </label>
-                            <label>Course Duration
-                                <input type="text" readonly/>
-                            </label>
-                            <label>The number of students in the group
-                                <input type="number" name="numberOfStudents" id="numberOfStudents-input" min="1" max="20"/>
-                            </label>
-                            <label>Price of course
-                                <p id="course-price">
-                                    <!-- эту дичь заполняет js -->
-                                </p>
-                            </label>
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content bg-dark text-light">
+                    <form id="orderCourseForm" method="POST" action="/api/submit-order">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Order the course</h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Submit</button>
-                    </div>
+                        <div class="modal-body">
+                            <div class="row g-2">
+                                <label class="col-12">Course name
+                                    <input type="text" class="form-control" name="courseName" readonly id="courseName-input"/>
+                                </label>
+                                <label class="col-12">InstructorName
+                                    <input type="text" class="form-control" name="teacherName" readonly id="teacherName-input"/>
+                                </label>
+                                <label class="col-12">Start Date
+                                    <select name="startDate" class="form-select" id="startDate-select">
+                                        <!-- это заполняет js -->
+                                    </select>
+                                </label>
+                                <label class="col-12">Course Duration (In weeks)
+                                    <input type="text" class="form-control" id="courseDurationWeek-input" readonly/>
+                                </label>
+                                <label class="col-12">The number of students in the group
+                                    <input type="number" class="form-control" name="numberOfStudents" id="numberOfStudents-input" min="1" max="20"/>
+                                </label>
+                                <button type="button" class="btn btn-primary d-inline col-3 ps-3" id="btn-get-price">Get price</button>
+                                <label class="hide" id="label-course-price">Price of course
+                                    <output id="course-price" name="price">
+                                        <!-- это заполняет js -->
+                                    </output>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
