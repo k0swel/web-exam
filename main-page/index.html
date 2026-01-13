@@ -172,6 +172,8 @@
                 </div>
             </div>
         </section>
+        <div id="yandex_map" class="map">
+        </div>
     </main>
     <footer id="footer" class="footer mt-5 py-5 border-top border-secondary">
         <div class="container">
@@ -235,10 +237,11 @@
                     </div>
                     <div class="modal-body">
                         <input type="hidden" id="courseId-input" name="course_id">
-                        <input type="hidden" id="courseType-input" name="type" value="course">
-                        <input type="hidden" id="totalLength-input" name="total_length">
-                        <input type="hidden" id="weekLength-input" name="week_length">
-                        <input type="hidden" id="courseFeePerHour-input" name="course_fee_per_hour">
+                        <input type="hidden" id="courseType-input" name="type" value="course"/>
+                        <input type="hidden" id="totalLength-input" name="total_length"/>
+                        <input type="hidden" id="weekLength-input" name="week_length"/>
+                        <input type="hidden" id="courseFeePerHour-input" name="course_fee_per_hour"/>
+                        <input type="hidden" id="teacherId-input" name="tutor_id"/>
                         
                         <div class="row g-3">
                             <div class="col-md-6">
@@ -432,7 +435,6 @@
             </div>
         </div>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <script type="module" src="./scripts/notifications.js"></script>
     <script type="module" src="./scripts/fill-tutors.js"></script>

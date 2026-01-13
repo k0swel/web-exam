@@ -1,5 +1,5 @@
 
-import { fetch_orders_API, update_order_API, delete_order_API } from "../../api/api.js";
+import { fetch_orders_API, update_order_API, delete_order_API, get_course_name_by_id_API, get_tutor_name_by_id_API } from "../../api/api.js";
 import { showNotification } from "../../main-page/scripts/order-handler.js";
 
 let allOrders = [];
@@ -36,7 +36,7 @@ function createOrdersPagination() {
     prevLi.appendChild(prevLink);
     paginationUl.appendChild(prevLi);
     
-    // Page numbers
+     
     const startPage = Math.max(1, currentPage - 2);
     const endPage = Math.min(totalPages, currentPage + 2);
     
@@ -110,7 +110,7 @@ function createOrdersPagination() {
         paginationUl.appendChild(lastLi);
     }
     
-    // Next button
+     
     const nextLi = document.createElement('li');
     nextLi.className = `page-item ${currentPage === totalPages ? 'disabled' : ''}`;
     const nextLink = document.createElement('a');
@@ -130,7 +130,7 @@ function createOrdersPagination() {
     paginationContainer.appendChild(paginationUl);
 }
 
-// Отображение заказов на текущей странице
+ 
 function displayOrders() {
     const tableBody = document.getElementById('ordersTableBody');
     tableBody.innerHTML = '';
@@ -139,15 +139,15 @@ function displayOrders() {
     const endIndex = startIndex + itemsPerPage;
     const ordersToShow = allOrders.slice(startIndex, endIndex);
     
-    ordersToShow.forEach((order, index) => {
-        const row = createOrderRow(order, startIndex + index + 1);
+    ordersToShow.forEach(async(order, index) => {
+        const row = await createOrderRow(order, startIndex + index + 1);
         tableBody.appendChild(row);
     });
     
     createOrdersPagination();
 }
 
-function createOrderRow(order, number) {
+async function createOrderRow(order, number) {
     const tr = document.createElement('tr');
     
     const tdNumber = document.createElement('td');
@@ -155,7 +155,7 @@ function createOrderRow(order, number) {
     tr.appendChild(tdNumber);
     
     const tdName = document.createElement('td');
-    tdName.textContent = order.course_id ? `Course #${order.course_id}` : `Tutor #${order.tutor_id}`;
+    tdName.textContent = order.course_id ? `${await get_course_name_by_id_API(order.course_id)}` : `${await get_tutor_name_by_id_API(order.tutor_id)}`;
     tr.appendChild(tdName);
     
     const tdOrderDate = document.createElement('td');
@@ -205,33 +205,57 @@ function createOrderRow(order, number) {
     return tr;
 }
 
-function showOrderDetails(order) {
-    document.getElementById('detailOrderId').textContent = order.id;
-    document.getElementById('detailCourseName').textContent = order.course_id ? `Course #${order.course_id}` : `Tutor #${order.tutor_id}`;
-    document.getElementById('detailTeacher').textContent = 'Teacher info from API';
-    document.getElementById('detailOrderDate').textContent = new Date(order.created_at).toLocaleString('ru-RU');
-    document.getElementById('detailLessonDate').textContent = new Date(order.date_start).toLocaleString('ru-RU');
-    
-    const basePrice = order.price * 0.8; 
-    const discount = order.early_registration ? basePrice * 0.1 : 0;
-    const surcharge = order.personalized ? 1500 : 0;
-    
-    document.getElementById('detailBasePrice').textContent = Math.round(basePrice);
-    document.getElementById('detailDiscount').textContent = Math.round(discount);
-    document.getElementById('detailSurcharge').textContent = Math.round(surcharge);
-    document.getElementById('detailTotalPrice').textContent = order.price;
-    
-    const description = `
-        ${order.course_id ? 'Course order' : 'Tutor session'} 
-        for ${order.persons} person(s). 
-        Duration: ${order.duration} hours.
-        ${order.early_registration ? 'Early registration applied. ' : ''}
-        ${order.group_enrollment ? 'Group discount applied. ' : ''}
-    `;
-    document.getElementById('detailDescription').textContent = description;
-    
-    const modal = new bootstrap.Modal(document.getElementById('orderDetailsModal'));
-    modal.show();
+async function showOrderDetails(order) {
+    try {
+        document.getElementById('detailOrderId').textContent = order.id;
+        document.getElementById('detailOrderDate').textContent = new Date(order.created_at).toLocaleString('ru-RU');
+        document.getElementById('detailLessonDate').textContent = new Date(order.date_start).toLocaleString('ru-RU');
+        
+        let courseName = '-';
+        let teacherName = '-';
+        
+        if (order.course_id) {
+            courseName = await get_course_name_by_id_API(order.course_id);
+            teacherName = await get_tutor_name_by_id_API(order.tutor_id);
+            console.log(`$teacherName = ${teacherName}`);
+        } 
+        
+        document.getElementById('detailCourseName').textContent = courseName;
+        document.getElementById('detailTeacher').textContent = teacherName;
+        
+        const basePrice = order.price * 0.8; 
+        const discount = order.early_registration ? basePrice * 0.1 : 0;
+        const surcharge = order.personalized ? 1500 : 0;
+        
+        document.getElementById('detailBasePrice').textContent = Math.round(basePrice);
+        document.getElementById('detailDiscount').textContent = discount;
+        document.getElementById('detailSurcharge').textContent = surcharge;
+        document.getElementById('detailTotalPrice').textContent = order.price;
+        
+        const modal = new bootstrap.Modal(document.getElementById('orderDetailsModal'));
+        modal.show();
+        
+    } catch (error) {
+        showNotification('Failed to load order details', 'error');
+        
+        document.getElementById('detailOrderId').textContent = order.id;
+        document.getElementById('detailCourseName').textContent = order.course_id ? `Course #${order.course_id}` : `Tutor #${order.tutor_id}`;
+        document.getElementById('detailTeacher').textContent = 'Error loading';
+        document.getElementById('detailOrderDate').textContent = new Date(order.created_at).toLocaleString('ru-RU');
+        document.getElementById('detailLessonDate').textContent = new Date(order.date_start).toLocaleString('ru-RU');
+        
+        const basePrice = order.price; 
+        const discount = order.early_registration ? basePrice * 0.1 : 0;
+        const surcharge = order.personalized ? 1500 : 0;
+        
+        document.getElementById('detailBasePrice').textContent = Math.round(basePrice);
+        document.getElementById('detailDiscount').textContent = Math.round(discount);
+        document.getElementById('detailSurcharge').textContent = Math.round(surcharge);
+        document.getElementById('detailTotalPrice').textContent = order.price;
+        
+        const modal = new bootstrap.Modal(document.getElementById('orderDetailsModal'));
+        modal.show();
+    }
 }
 
 function editOrder(order) {
@@ -303,8 +327,6 @@ async function initAccount() {
     document.getElementById('saveEditBtn').addEventListener('click', async () => {
         const orderId = document.getElementById('editOrderId').value;
         const lessonDate = document.getElementById('editLessonDate').value;
-        const teacher = document.getElementById('editTeacher').value;
-        const notes = document.getElementById('editNotes').value;
         
         try {
             await update_order_API(orderId, {

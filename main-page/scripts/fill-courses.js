@@ -1,4 +1,4 @@
-import { fetch_courses_API, fetch_specific_course_API } from "../../api/api.js";
+import { fetch_courses_API, fetch_specific_course_API, fetch_tutors_API } from "../../api/api.js";
 import { calculateCoursePrice, checkEarlyRegistration, isIntensiveCourse } from "./price-calculator.js";
 
 let allCourses = [];
@@ -142,19 +142,19 @@ function createPagination() {
     
      
     paginationContainer.querySelectorAll('.page-link[data-page]').forEach(link => {
-        link.addEventListener('click', (e) => {
+        link.addEventListener('click', async(e) => {
             e.preventDefault();
             const page = parseInt(link.dataset.page);
             if (page && page !== currentPage) {
                 currentPage = page;
-                displayCourses();
+                await displayCourses();
             }
         });
     });
 }
 
  
-function displayCourses() {
+async function displayCourses() {
     const table = document.getElementById('courses-table-body');
     if (!table) return;
     
@@ -177,7 +177,7 @@ function displayCourses() {
     const coursesToShow = filteredCourses.slice(startIndex, endIndex);
     
     for (const course of coursesToShow) {
-        const tableRow = create_row_for_table(course);
+        const tableRow = await create_row_for_table(course);
         table.appendChild(tableRow);
     }
     createPagination();
@@ -391,9 +391,11 @@ async function callbackChooseCourse(event) {
     const sourceButtonEvent = event.currentTarget;
     const course_id = sourceButtonEvent.dataset.courseId;
     const course_info = await fetch_specific_course_API(course_id);
-    
-    // Заполняем поля формы
+    const tutor_id = await get_teacher_id_by_teacher_name(course_info.teacher);
+      
     document.getElementById('courseName-input').value = course_info.name;
+    document.getElementById('teacherId-input').value = tutor_id;
+    console.log(document.getElementById('teacherId-input').value);
     document.getElementById('teacherName-input').value = course_info.teacher;
     document.getElementById('courseDurationWeek-input').value = `${course_info.total_length} weeks (${course_info.week_length} hours/week)`;
     document.getElementById('courseDurationWeek-input').dataset.duration_hours = course_info.total_length * course_info.week_length;
@@ -401,17 +403,17 @@ async function callbackChooseCourse(event) {
     document.getElementById('courseDurationWeek-input').dataset.week_length = course_info.week_length
     document.getElementById('courseId-input').value = course_id;
     
-    // Настраиваем даты и время
+      
     const dateSelect = document.getElementById('startDate-select');
     write_available_dates_for_start_course(dateSelect, course_info.start_dates);
     handleDateChange(course_info);
     
-    // Очищаем дополнительные опции
+      
     const additionalOptions = document.getElementById('additional-options');
     if (additionalOptions) {
         additionalOptions.innerHTML = '';
         
-        // Автоматические опции (только индикация)
+          
         const autoOptions = document.createElement('div');
         autoOptions.className = 'mb-3';
         autoOptions.innerHTML = `
@@ -428,7 +430,7 @@ async function callbackChooseCourse(event) {
         `;
         additionalOptions.appendChild(autoOptions);
         
-        // Пользовательские опции
+          
         const userOptions = document.createElement('div');
         userOptions.innerHTML = '<h6>Additional Options:</h6>';
         userOptions.appendChild(create_additional_options('supplementary', 'supplementary-checkbox', 'Supplementary materials (+2000 RUB per student)'));
@@ -439,11 +441,9 @@ async function callbackChooseCourse(event) {
         additionalOptions.appendChild(userOptions);
     }
     
-    // Обновляем обработчик кнопки расчета
+      
     const priceButton = document.getElementById('btn-get-price');
     priceButton.onclick = () => getCoursePriceEvent(course_info);
-    
-    // Сбрасываем поля
     document.getElementById('numberOfStudents-input').value = '1';
     document.getElementById('course-price').textContent = '0';
     document.getElementById('label-course-price').classList.add('hide');
@@ -454,10 +454,21 @@ async function callbackChooseCourse(event) {
     }
 }
 
+async function get_teacher_id_by_teacher_name(teacher_name) {
+    const tutors = await fetch_tutors_API();
+    let teacher_id = null;
+    tutors.forEach((tutor) => {
+        if (tutor.name == teacher_name) {
+            teacher_id = tutor.id;
+        }
+    });
+    return teacher_id;
+}
  
-function create_button_to_select_course(course) {
+async function create_button_to_select_course(course) {
     const btn = document.createElement('button');
     btn.textContent = 'Buy';
+    btn.dataset.teacherId = await get_teacher_id_by_teacher_name(course.teacher);
     btn.dataset.courseId = course.id;
     btn.dataset.bsToggle = 'modal';
     btn.dataset.bsTarget = '#orderCourseModalWindow';
@@ -467,7 +478,7 @@ function create_button_to_select_course(course) {
 }
 
  
-function create_row_for_table(course) {
+async function create_row_for_table(course) {
     const tr = document.createElement('tr');
      
     const tdName = document.createElement('td');
@@ -500,7 +511,7 @@ function create_row_for_table(course) {
     
      
     const tdButton = document.createElement('td');
-    tdButton.appendChild(create_button_to_select_course(course));
+    tdButton.appendChild(await create_button_to_select_course(course));
     tr.appendChild(tdButton);
     
     return tr;
