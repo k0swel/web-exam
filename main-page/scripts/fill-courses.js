@@ -1,5 +1,5 @@
-import { fetch_courses_API, fetch_specific_course_API, fetch_tutors_API } from "../../api/api.js";
-import { calculateCoursePrice, checkEarlyRegistration, isIntensiveCourse } from "./price-calculator.js";
+import { fetch_courses_API, fetch_specific_course_API, fetch_tutors_API } from "/api/api.js";
+import { calculateCoursePrice, checkEarlyRegistration, isIntensiveCourse } from "/main-page/scripts/price-calculator.js";
 
 let allCourses = [];
 let filteredCourses = [];

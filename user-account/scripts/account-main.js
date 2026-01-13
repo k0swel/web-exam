@@ -1,6 +1,6 @@
 
 import { fetch_orders_API, update_order_API, delete_order_API, get_course_name_by_id_API, get_tutor_name_by_id_API } from "../../api/api.js";
-import { showNotification } from "../../main-page/scripts/order-handler.js";
+import { showNotification } from "/main-page/scripts/order-handler.js";
 
 let allOrders = [];
 let currentPage = 1;

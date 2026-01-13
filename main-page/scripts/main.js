@@ -1,4 +1,4 @@
-import { initOrderHandler } from './order-handler.js';
+import { initOrderHandler } from '/main-page/scripts/order-handler.js';
 
   
 document.addEventListener('DOMContentLoaded', () => {

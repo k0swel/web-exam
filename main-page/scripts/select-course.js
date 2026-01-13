@@ -1,4 +1,4 @@
-import { notifications } from './notifications.js';
+import { notifications } from '/main-page/scripts/notifications.js';
 
 function toggleButton(action, button) {
     if (action === 'toselect') {

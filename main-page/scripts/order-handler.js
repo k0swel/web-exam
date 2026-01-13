@@ -1,5 +1,5 @@
-import { create_order_API } from "../../api/api.js";
-import { calculateCoursePrice, checkEarlyRegistration, isIntensiveCourse } from "./price-calculator.js";
+import { create_order_API } from "/api/api.js";
+import { calculateCoursePrice, checkEarlyRegistration, isIntensiveCourse } from "/main-page/scripts/price-calculator.js";
 
   
 function showNotification(message, type = 'success') {

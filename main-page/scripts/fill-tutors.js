@@ -1,5 +1,5 @@
-import { fetch_tutors_API } from "../../api/api.js"
-import { applyFilters } from "./fill-courses.js";
+import { fetch_tutors_API } from "/api/api.js"
+import { applyFilters } from "/main-page/scripts/fill-courses.js";
 const result = await fetch_tutors_API();
 
   

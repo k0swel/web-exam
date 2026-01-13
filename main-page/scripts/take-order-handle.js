@@ -1,5 +1,5 @@
-import { create_order_API } from "../../api/api.js";
-import { showNotification } from "./order-handler.js";
+import { create_order_API } from "/api/api.js";
+import { showNotification } from "/main-page/scripts/order-handler.js";
 
   
 function initTutorOrderHandler() {
