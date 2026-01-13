@@ -1,31 +1,43 @@
-
 function getFilterRequirements() {
-    const filter = {'Qualification': document.getElementById('qualification-selector').value, 'Experience': document.getElementById('experience-filter').value}
-    return filter;
+    const qualification = document.getElementById('qualification-selector').value;
+    const experience = document.getElementById('experience-filter').value;
+    
+    return {
+        qualification: qualification,
+        experience: experience ? parseInt(experience) : 0
+    };
 }
 
 function main() {
     const btnFindTutors = document.getElementById('tutors-find');
     const tutors_table_body = document.getElementById('tutors-table-body');
 
-
     btnFindTutors.addEventListener('click', (event) => {
-        const table_rows_array = tutors_table_body.children;
+        event.preventDefault();
+        
+        const table_rows_array = Array.from(tutors_table_body.children);
         const filter_requirements = getFilterRequirements();
-        console.log(filter_requirements);
-        for (const entry of table_rows_array) {
+        
+        table_rows_array.forEach(entry => {
             entry.classList.remove('hide');
             const entry_dataset = entry.dataset;
-            console.log(entry_dataset);
-            const requirement_one = filter_requirements['Qualification'] === entry_dataset['languageLevel'] || filter_requirements['Qualification'] === 'All';
-            const requirement_two = Number(entry_dataset['workExperience']) >= filter_requirements['Experience'];
-
-            console.log(requirement_one, requirement_two);
-
-            if ( requirement_one && requirement_two == false) {
+            
+            const qualificationMatch = filter_requirements.qualification === 'All' || filter_requirements.qualification === entry_dataset.languageLevel;
+            
+            const experienceMatch = !filter_requirements.experience || parseInt(entry_dataset.workExperience) >= filter_requirements.experience;
+            
+            if (!qualificationMatch || !experienceMatch) {
                 entry.classList.add('hide');
             }
-        }
+        });
+    });
+    
+    document.getElementById('experience-filter').addEventListener('input', () => {
+        btnFindTutors.click();
+    });
+    
+    document.getElementById('qualification-selector').addEventListener('change', () => {
+        btnFindTutors.click();
     });
 }
 

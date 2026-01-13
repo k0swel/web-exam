@@ -213,3 +213,61 @@ h2 {
 .footer {
     color: white;
 }
+
+
+#courses-pagination .page-link {
+    background-color: rgb(40, 39, 39);
+    color: white;
+    border: 1px solid #555;
+}
+
+#courses-pagination .page-link:hover {
+    background-color: rgba(13, 110, 253, 0.3);
+    color: white;
+    border-color: #0d6efd;
+}
+
+#courses-pagination .page-item.active .page-link {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+#courses-pagination .page-item.disabled .page-link {
+    background-color: rgb(60, 60, 60);
+    color: #999;
+    border-color: #555;
+}
+
+#courses-page-info {
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+.badge.bg-success {
+    background-color: #198754 !important;
+}
+
+.badge.bg-warning {
+    background-color: #ffc107 !important;
+}
+
+.badge.bg-danger {
+    background-color: #dc3545 !important;
+}
+
+.badge.bg-secondary {
+    background-color: #6c757d !important;
+}
+
+input[readonly] {
+    background-color: rgb(211, 211, 211);
+}
+
+
+.th-photo {
+    width: 1rem;
+}
+
+.table-avatar {
+    width: 100%;
+}
